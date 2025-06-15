@@ -14,3 +14,10 @@ header {
   background: url("assets/images/trivia-picture.webp") no-repeat center center /
     cover;
 }
+
+/*Button Styles */
+.btn {
+  border: 2px solid;
+  background-color: transparent;
+  color: white;
+}
