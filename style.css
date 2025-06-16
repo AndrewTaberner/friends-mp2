@@ -15,6 +15,14 @@ header {
     cover;
 }
 
+/* Container Styling */
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: rgb(188, 164, 211);
+}
+
 /*Button Styles */
 .btn {
   border: 2px solid;
