@@ -7,8 +7,8 @@ const questionElement = document.getElementById("question");
 const optionsList = document.getElementById("options");
 const nextButton = document.getElementById("next-btn");
 
-const correctSound = new Audio("assests/audio/joey.mp3");
-const wrongSound = new Audio("assests/audio/janice.mp3");
+const correctSound = new Audio("assets/audio/joey.mp3");
+const wrongSound = new Audio("assets/audio/janice.mp3");
 
 function shuffleQuestions() {
   shuffledQuestions = [...questions].sort(() => Math.random() - 0.5);
