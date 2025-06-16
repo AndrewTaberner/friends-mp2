@@ -72,19 +72,15 @@ h5.card-title {
     margin: 0 auto;
   }
   .card-img-top {
-    height: 10rem;
+    height: 20rem;
     object-fit: cover;
   }
 }
 /* Screen sizes large desktops and above */
-@media (min-width: 1440px) {
+@media (max-width: 1440px) {
   .container {
     max-width: 1440px;
     margin: 0 auto;
-  }
-  .card-img-top {
-    height: 25rem;
-    object-fit: cover;
   }
 }
 
