@@ -21,3 +21,23 @@ header {
   background-color: transparent;
   color: white;
 }
+
+/* Card Styles */
+h5.card-title {
+  font-weight: bolder !important;
+  font-size: x-large !important;
+}
+
+.card-img-top {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Hover Zoom Effect */
+.hover-zoom {
+  transition: transform 0.3s ease;
+}
+.hover-zoom:hover {
+  transform: scale(1.05);
+}
