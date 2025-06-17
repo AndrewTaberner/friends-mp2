@@ -37,7 +37,7 @@ h5.card-title {
 }
 
 .card-img-top {
-  height: 13rem;
+  height: 23rem;
   object-fit: cover;
 }
 
@@ -47,6 +47,23 @@ h5.card-title {
 }
 .hover-zoom:hover {
   transform: scale(1.05);
+}
+
+/* Character Card Styles */
+/* .character-card img {
+  object-fit: cover;
+  height: 300px;
+} */
+
+.character-card blockquote {
+  font-style: italic;
+  color: #555;
+  margin-top: 1rem;
+}
+
+.card-title {
+  font-family: "Caveat", cursive;
+  font-size: 1.6rem;
 }
 
 /* Responsive Adjustments */
@@ -72,7 +89,7 @@ h5.card-title {
     margin: 0 auto;
   }
   .card-img-top {
-    height: 20rem;
+    height: 33rem;
     object-fit: cover;
   }
 }
