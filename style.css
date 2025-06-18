@@ -37,7 +37,7 @@ h5.card-title {
 }
 
 .card-img-top {
-  height: 23rem;
+  height: 13rem;
   object-fit: cover;
 }
 
@@ -89,7 +89,7 @@ h5.card-title {
     margin: 0 auto;
   }
   .card-img-top {
-    height: 33rem;
+    height: 15rem;
     object-fit: cover;
   }
 }

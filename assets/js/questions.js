@@ -68,5 +68,66 @@ const questions = [
     options: ["Central Coffee", "The Daily Grind", "Central Perk", "Cafe Central"],
     answer: "Central Perk",
     difficulty: "easy"
-  }
+  },
+  {
+    question: "What is the name of Joey's soap opera character?",
+    options: ["Dr. Drake Ramoray", "Dr. Mike Brady", "Dr. Phil Hammond", "Dr. Ross Geller"],
+    answer: "Dr. Drake Ramoray",
+    difficulty: "medium"
+  },
+  {
+    question: "What does Ross famously shout when he moves his new couch into his apartment?",
+    options: ["Pivot!", "Move it!", "Couch!", "Help!"],
+    answer: "Pivot!",
+    difficulty: "easy"
+  },
+  {
+    question: "What is the name of Phoebe's twin sister?",
+    options: ["Ursula", "Rachel", "Monica", "Emily"],
+    answer: "Ursula",
+    difficulty: "easy"
+  },
+  {
+    question: "What name was on the TV guide adressed to Chandler and Joey's apartment?",
+    options: ["Mrs Chandler Bing", "Miss Chanandler Bong", "Mr Chandler Bung", "Mr Chanandler Tribbiani"],
+    answer: "Miss Chanandler Bong",
+    difficulty: "hard"
+  },
+  {
+    question: "What is the name of the song that Phoebe Buffay sings at Central Perk?",
+    options: ["Smelly Dog", "Smelly Mouse", "Smelly Cat", "Smelly Rat"],
+    answer: "Smelly Cat",
+    difficulty: "easy"
+  },
+  {
+    question: "What is the name of the actor who plays Ross Geller?",
+    options: ["David Schwimmer", "Matthew Perry", "Matt LeBlanc", "Lisa Kudrow"],
+    answer: "David Schwimmer",
+    difficulty: "medium"
+  },
+  {
+    question: "Which friend is the only one to have kissed all the other friends?",
+    options: ["Chandler", "Joey", "Ross", "Rachel"],
+    answer: "Rachel",
+    difficulty: "medium"
+  },
+  {
+    question: "Which actress played the role of Janice, Chandler’s on-again-off-again girlfriend?",
+    options: ["Maggie Wheeler", "Jill Green", "June Gable", "Kathleen Turner"],
+    answer: "Maggie Wheeler",
+    difficulty: "medium"
+  },
+  {
+    question: "What is the name of the character played by Lisa Kudrow?",
+    options: ["Monica Geller", "Rachel Green", "Phoebe Buffay", "Chandler Bing"],
+    answer: "Phoebe Buffay",
+    difficulty: "easy"
+  },
+  {
+    question: "What is the name of Joey's soap opera character on 'Days of Our Lives'?",
+    options: ["Dr. Drake Ramoray", "Dr. Mike Brady", "Dr. Phil Hammond", "Dr. Ross Geller"],
+    answer: "Dr. Drake Ramoray",
+    difficulty: "medium"
+  },
+  
 ];
