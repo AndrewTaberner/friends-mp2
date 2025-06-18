@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Search and explore Friends TV show episodes with detailed information">
     <title>Episode Search | Friends Trivia</title>
 
     <!-- Bootstrap CSS -->
@@ -41,8 +42,11 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
+    <!-- Skip to content link for keyboard users -->
+    <a href="#main-content" class="visually-hidden-focusable">Skip to main content</a>
+
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-black">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-black" aria-label="Main navigation">
       <div class="container-fluid">
         <a class="navbar-brand d-flex align-items-center" href="index.html">
           <img
@@ -50,18 +54,24 @@
             alt="Central Perk Logo"
             height="30"
             class="me-2"
+            aria-hidden="true"
           />
           <img
             src="assets/images/friends-logo.jpeg"
             alt="Friends Logo"
             height="30"
+            aria-hidden="true"
           />
+          <span class="visually-hidden">Friends Trivia Home</span>
         </a>
         <button
           class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -69,23 +79,23 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link" href="quiz.html">
-                <i class="fas fa-question-circle me-1"></i>Quiz
+              <a class="nav-link" href="quiz.html" aria-label="Quiz">
+                <i class="fas fa-question-circle me-1" aria-hidden="true"></i>Quiz
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="episodes.html">
-                <i class="fas fa-film me-1"></i>Episodes
+              <a class="nav-link active" href="episodes.html" aria-current="page" aria-label="Episodes">
+                <i class="fas fa-film me-1" aria-hidden="true"></i>Episodes
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="characters.html">
-                <i class="fas fa-user-friends me-1"></i>Characters
+              <a class="nav-link" href="characters.html" aria-label="Characters">
+                <i class="fas fa-user-friends me-1" aria-hidden="true"></i>Characters
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="games.html">
-                <i class="fas fa-gamepad me-1"></i>Games
+              <a class="nav-link" href="games.html" aria-label="Games">
+                <i class="fas fa-gamepad me-1" aria-hidden="true"></i>Games
               </a>
             </li>
           </ul>
@@ -94,21 +104,27 @@
     </nav>
 
     <!-- Search and Filter -->
-    <section class="container my-5">
-      <h2 class="text-center mb-4">
-        <i class="fas fa-tv"></i> Search Friends Episodes
-      </h2>
+    <main id="main-content" class="container my-5">
+      <h1 class="text-center mb-4">
+        <i class="fas fa-tv" aria-hidden="true"></i> Search Friends Episodes
+      </h1>
 
-      <input
-        type="text"
-        id="searchInput"
-        class="form-control form-control-lg"
-        placeholder="Search by title or description..."
-      />
+      <form role="search" aria-label="Episode search">
+        <label for="searchInput" class="visually-hidden">Search episodes</label>
+        <input
+          type="text"
+          id="searchInput"
+          class="form-control form-control-lg"
+          placeholder="Search by title or description..."
+          aria-describedby="searchHelp"
+        />
+        <div id="searchHelp" class="form-text visually-hidden">Type to search Friends episodes by title or description</div>
+      </form>
 
       <div class="row mt-3">
         <div class="col-md-6 offset-md-3">
-          <select id="seasonFilter" class="form-select">
+          <label for="seasonFilter" class="visually-hidden">Filter by season</label>
+          <select id="seasonFilter" class="form-select" aria-label="Select season to filter">
             <option value="">All Seasons</option>
             <option value="1">Season 1</option>
             <option value="2">Season 2</option>
@@ -124,12 +140,14 @@
         </div>
       </div>
 
-      <ul id="resultsList" class="list-group mt-4"></ul>
+      <div id="searchStatus" class="visually-hidden" aria-live="polite"></div>
+      
+      <ul id="resultsList" class="list-group mt-4" aria-label="Episode search results"></ul>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-3">
-      <p>&copy; 2025 Friends Trivia</p>
+    <footer class="bg-dark text-white text-center py-3" role="contentinfo">
+      <p>&copy; <span id="currentYear">2025</span> Friends Trivia</p>
     </footer>
 
     <!-- Bootstrap Bundle -->
@@ -137,5 +155,10 @@
 
     <!-- Episode Script -->
     <script src="./assets/js/episodes.js" defer></script>
+    
+    <!-- Current year script -->
+    <script>
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
   </body>
 </html>
