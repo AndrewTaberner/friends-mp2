@@ -2,14 +2,14 @@ const characters = [
   {
     name: "Rachel Greene",
     playedBy: "Jennifer Aniston",
-    images: ["assets/images/rachel.jpg", "assets/images/rachel1.jpg"],
+    images: ["assets/images/rachel.jpg", "assets/images/rachel1.webp"],
     description: "Fashion enthusiast who starts off as a waitress and grows into a successful businesswoman.",
     quote: "It's like all my life everyone has always told me, 'You're a shoe!'"
   },
   {
     name: "Monica Geller",
     playedBy: "Courteney Cox",
-    images: ["assets/images/monica.jpg", "assets/images/monica1.jpg"],
+    images: ["assets/images/monica.jpg", "assets/images/monica1.webp"],
     description: "Competitive and organized chef with a big heart and a love for cleaning.",
     quote: "Welcome to the real world. It sucks. You’re gonna love it."
   },
