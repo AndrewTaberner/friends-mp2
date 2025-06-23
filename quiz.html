@@ -168,23 +168,34 @@
         aria-label="Quiz container"
       >
         <h2 id="question" class="mb-4"></h2>
-        <ul id="options" class="list-group mb-4 text-start" role="list">
-          <!-- Options will be inserted here by JavaScript -->
-          <!-- Each option should have role="listitem" and be a button for better accessibility -->
-        </ul>
+        <ul id="options" class="list-group mb-4 text-start" role="list"></ul>
         <div
           id="feedback"
           class="mb-3 visually-hidden"
           aria-live="assertive"
         ></div>
-        <button
-          id="next-btn"
-          class="btn btn-primary"
-          disabled
-          aria-label="Next question"
-        >
-          Let's play...
-        </button>
+
+        <!-- Button Row -->
+        <div class="d-flex justify-content-center gap-3 mt-3">
+          <button
+            id="next-btn"
+            class="btn btn-primary flex-fill"
+            disabled
+            aria-label="Next question"
+            style="min-width: 150px"
+          >
+            Let's play...
+          </button>
+          <button
+            id="quit-btn"
+            class="btn btn-outline-danger flex-fill"
+            aria-label="Quit quiz and return to home"
+            style="min-width: 150px"
+          >
+            Quit Quiz
+          </button>
+        </div>
+
         <div
           id="progress"
           class="mt-3 visually-hidden"
@@ -231,11 +242,5 @@
     <!-- Quiz Script -->
     <script src="assets/js/questions.js" defer></script>
     <script src="assets/js/quiz.js" defer></script>
-
-    <!-- Current year script -->
-    <script>
-      document.getElementById("currentYear").textContent =
-        new Date().getFullYear();
-    </script>
   </body>
 </html>

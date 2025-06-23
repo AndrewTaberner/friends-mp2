@@ -146,3 +146,13 @@ function restartQuiz() {
 shuffleQuestions();
 showQuestion();
 nextButton.addEventListener("click", handleNext);
+
+// Quit button functionality
+// This will prompt the user to confirm quitting the quiz and redirect to the homepage
+const quitButton = document.getElementById("quit-btn");
+quitButton.addEventListener("click", () => {
+  if (confirm("Are you sure you want to quit the quiz and return to the homepage?")) {
+    window.location.href = "index.html";
+  }
+});
+
