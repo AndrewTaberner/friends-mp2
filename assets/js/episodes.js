@@ -1,3 +1,15 @@
+// Manual tooltip initialization
+document.addEventListener("DOMContentLoaded", function() {
+  var tooltipTriggerList = [].slice.call(
+    document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  );
+  var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl, {
+      trigger: "hover focus"
+    });
+  });
+});
+
 const API_KEY = '94b6bd05d2a69d2e65ebecdc93128dce';
 const BASE_URL = 'https://api.themoviedb.org/3/tv/1668';
 const IMG_BASE = 'https://image.tmdb.org/t/p/w300';
