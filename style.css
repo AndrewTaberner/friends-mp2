@@ -7,7 +7,8 @@ body {
   font-size: 25px;
   font-weight: 400;
   line-height: 1.6;
-  background-color: #fdfdfd;
+  background: url("assets/images/apartment-block.jpg") no-repeat center center;
+  background-size: cover;
   color: #333;
   min-height: 100vh;
   display: flex;
@@ -21,27 +22,48 @@ body {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Header Styles */
-header {
-  background-color: #0d6efd; /* Fallback color */
-  background-image: url("assets/images/trivia-picture.webp");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  color: white;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-  padding: 3rem 0;
-  margin-bottom: 1rem;
-  position: relative;
+/* Navbar Links - Updated with scaling effect */
+.custom-nav-link {
+  color: white !important;
+  transition: all 0.3s ease;
+  display: inline-block; /* Required for transform to work */
+  transform-origin: center; /* Ensures scaling happens from center */
 }
 
-header::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+.custom-nav-link:hover {
+  color: #cccccc !important;
+  transform: scale(1.05);
+}
+
+/* Navbar Logo Styles - Enhanced */
+.logo-container {
+  transition: transform 0.3s ease;
+  display: flex; /* Ensures proper alignment during transform */
+  align-items: center;
+}
+
+.logo-img {
+  transition: transform 0.3s ease;
+}
+
+.logo-container:hover {
+  transform: scale(1.05);
+}
+
+.logo-container:hover .logo-img {
+  transform: scale(1.05);
+}
+
+/* Header Styles */
+header.text-center.py-5 {
+  background: #0d6efd url("../assets/images/trivia-picture.webp") no-repeat
+    center center/cover;
+  color: white !important;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.9);
+  padding: 3rem 0 !important;
+  margin-bottom: 1rem !important;
+  position: relative;
 }
 
 header .container-head {
@@ -55,14 +77,19 @@ header h1 {
 }
 
 /* Container Styling */
-.container {
-  max-width: 100%;
+main.container {
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto 3rem;
-  padding: 2rem;
-  background-color: rgb(188, 164, 211);
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem;
+  position: relative;
+  z-index: 1;
   flex: 1;
+  background-color: rgb(188, 164, 211);
+  backdrop-filter: blur(4px);
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.9),
+    inset 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
 /* Button Styles */
@@ -75,14 +102,18 @@ header h1 {
   padding: 0.5rem 1.5rem;
 }
 
-.btn:hover {
-  background-color: rgba(255, 255, 255, 0.4);
+.custom-btn {
   color: white;
-  transform: translateY(-2px);
+  background-color: #0d6efd;
+  border: 1px solid #0d6efd;
+  transition: all 0.3s ease;
 }
 
-.btn-outline-primary {
-  border-color: white;
+.custom-btn:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+  color: rgb(233, 58, 175);
+  border-color: rgb(233, 58, 175);
+  transform: translateY(-2px);
 }
 
 /* Card Styles */
@@ -161,7 +192,7 @@ footer p {
 
 /* Responsive Adjustments */
 @media (min-width: 576px) {
-  .container {
+  main.container {
     padding: 2.5rem;
   }
 
@@ -170,19 +201,25 @@ footer p {
   }
 }
 
-@media (min-width: 768px) {
-  .container {
-    max-width: 720px;
-    padding: 3rem;
+@media (max-width: 768px) {
+  main.container {
+    width: 95%;
+    padding: 1.5rem;
+    margin: 0 auto 2rem;
   }
 
-  .card-img-top {
-    height: 13rem;
+  /* Adjust navbar link scaling on mobile */
+  .custom-nav-link:hover {
+    transform: scale(1.03);
   }
+}
 
-  header {
-    padding: 4rem 0;
-  }
+.card-img-top {
+  height: 13rem;
+}
+
+header {
+  padding: 4rem 0;
 }
 
 @media (min-width: 992px) {
