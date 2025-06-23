@@ -25,31 +25,32 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- Skip to content link -->
-    <a href="#main-content" class="visually-hidden-focusable"
-      >Skip to main content</a
-    >
-
     <!-- Navbar -->
-    <nav
-      class="navbar navbar-expand-lg navbar-dark bg-dark bg-black"
-      aria-label="Main navigation"
-    >
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-black">
       <div class="container-fluid">
-        <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <a
+          class="navbar-brand d-flex align-items-center logo-container"
+          href="index.html"
+          aria-label="Friends Central Perk Home"
+          data-bs-toggle="tooltip"
+          data-bs-placement="bottom"
+          title="Return to Homepage"
+        >
           <img
             src="assets/images/central-perk.ico"
-            alt=""
+            alt="Central Perk Logo"
             height="30"
-            class="me-2"
-            aria-hidden="true"
+            class="me-2 logo-img"
+            loading="lazy"
           />
           <img
             src="assets/images/friends-logo.jpeg"
-            alt="Friends Logo - Return to Home"
+            alt="Friends TV Show Logo"
             height="30"
+            class="logo-img"
+            loading="lazy"
+            id="friends-logo"
           />
-          <span class="visually-hidden">Home</span>
         </a>
         <button
           class="navbar-toggler"
@@ -58,7 +59,7 @@
           data-bs-target="#navbarNav"
           aria-controls="navbarNav"
           aria-expanded="false"
-          aria-label="Toggle navigation menu"
+          aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -66,34 +67,41 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link" href="quiz.html" aria-label="Take the Quiz">
+              <a
+                class="nav-link custom-nav-link"
+                href="quiz.html"
+                aria-label="Quiz"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="Test your Friends knowledge!"
+              >
                 <i class="fas fa-question-circle me-1" aria-hidden="true"></i
                 >Quiz
               </a>
             </li>
             <li class="nav-item">
               <a
-                class="nav-link"
+                class="nav-link custom-nav-link"
                 href="episodes.html"
-                aria-label="Browse Episodes"
+                aria-label="Episodes"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="Browse all episodes"
               >
                 <i class="fas fa-film me-1" aria-hidden="true"></i>Episodes
               </a>
             </li>
             <li class="nav-item">
               <a
-                class="nav-link active"
+                class="nav-link custom-nav-link"
                 href="characters.html"
-                aria-current="page"
-                aria-label="View Characters (current page)"
+                aria-label="Characters"
+                data-bs-toggle="tooltip"
+                data-bs-placement="bottom"
+                title="Meet the gang"
               >
                 <i class="fas fa-user-friends me-1" aria-hidden="true"></i
                 >Characters
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="games.html" aria-label="Play Games">
-                <i class="fas fa-gamepad me-1" aria-hidden="true"></i>Games
               </a>
             </li>
           </ul>

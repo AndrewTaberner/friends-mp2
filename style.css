@@ -32,13 +32,13 @@ body {
 
 .custom-nav-link:hover {
   color: #cccccc !important;
-  transform: scale(1.05);
+  transform: scale(1.08); /* Scale effect on hover */
 }
 
 /* Navbar Logo Styles - Enhanced */
 .logo-container {
   transition: transform 0.3s ease;
-  display: flex; /* Ensures proper alignment during transform */
+  display: flex;
   align-items: center;
 }
 
@@ -47,11 +47,11 @@ body {
 }
 
 .logo-container:hover {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 .logo-container:hover .logo-img {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 /* Header Styles */
@@ -210,7 +210,7 @@ footer p {
 
   /* Adjust navbar link scaling on mobile */
   .custom-nav-link:hover {
-    transform: scale(1.03);
+    transform: scale(1.08);
   }
 }
 
@@ -222,27 +222,28 @@ header {
   padding: 4rem 0;
 }
 
-@media (min-width: 992px) {
-  .container {
-    max-width: 960px;
-  }
-
-  .card-img-top {
-    height: 15rem;
-  }
-
-  header h1 {
-    font-size: 3.5rem;
+@media (max-width: 1024px) {
+  main.container {
+    width: 95%;
+    padding: 1.5rem;
+    margin: 0 auto 2rem;
   }
 }
 
-@media (min-width: 1200px) {
-  .container {
-    max-width: 1140px;
+@media (max-width: 1440px) {
+  main.container {
+    width: 95%;
+    padding: 1.5rem;
+    margin: 0 auto 2rem;
   }
+}
 
-  .card-img-top {
-    height: 17rem;
+@media (max-width: 2560px) {
+  main.container {
+    width: 95%;
+    max-width: 2500px;
+    padding: 1.5rem;
+    margin: 0 auto 2rem;
   }
 }
 
