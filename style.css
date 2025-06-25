@@ -273,10 +273,14 @@ footer p {
     height: 38rem;
   }
 
+  .card-body {
+    padding: 20rem;
+  }
+
   main.container {
     width: 95%;
     max-width: 2500px;
-    padding: 1.5rem;
+    padding-top: 1.5rem;
     margin: 0 auto 2rem;
   }
 }

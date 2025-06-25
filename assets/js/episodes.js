@@ -1,30 +1,40 @@
-// Manual tooltip initialization
+// Manual tooltip initialization using Bootstrap
 document.addEventListener("DOMContentLoaded", function() {
+  // Select all elements with the Bootstrap tooltip trigger attribute
   var tooltipTriggerList = [].slice.call(
     document.querySelectorAll('[data-bs-toggle="tooltip"]')
   );
+
+  // Initialize a Bootstrap tooltip for each selected element
   var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl, {
-      trigger: "hover focus"
+      trigger: "hover focus" // Tooltip appears on hover or focus
     });
   });
 });
 
+// API key and base URLs for TMDB (The Movie Database)
 const API_KEY = '94b6bd05d2a69d2e65ebecdc93128dce';
 const BASE_URL = 'https://api.themoviedb.org/3/tv/1668';
-const IMG_BASE = 'https://image.tmdb.org/t/p/w300';
+const IMG_BASE = 'https://image.tmdb.org/t/p/w300'; // Image URL prefix for episode stills
 
+// DOM elements for user interaction
 const searchInput = document.getElementById('searchInput');
 const seasonFilter = document.getElementById('seasonFilter');
 const resultsList = document.getElementById('resultsList');
 
-let allEpisodes = [];
+let allEpisodes = []; // Store all episodes from all seasons
 
+// Asynchronously fetch episode data for all 10 seasons
 async function fetchAllEpisodes() {
   const episodes = [];
+
   for (let season = 1; season <= 10; season++) {
+    // Fetch data for each season
     const res = await fetch(`${BASE_URL}/season/${season}?api_key=${API_KEY}`);
     const data = await res.json();
+
+    // Extract and store relevant episode information
     data.episodes.forEach(ep => {
       episodes.push({
         id: ep.id,
@@ -37,30 +47,39 @@ async function fetchAllEpisodes() {
       });
     });
   }
+
   return episodes;
 }
 
+// Filter episodes based on search input and season selection
 function filterEpisodes() {
-  const query = searchInput.value.toLowerCase();
+  const query = searchInput.value.toLowerCase(); // Convert search input to lowercase
   const selectedSeason = seasonFilter.value;
 
   const filtered = allEpisodes.filter(ep => {
+    // Check if the episode name or description includes the search term
     const matchesText = ep.name.toLowerCase().includes(query) || ep.overview.toLowerCase().includes(query);
+
+    // Check if the episode matches the selected season (or if no season is selected)
     const matchesSeason = selectedSeason === '' || ep.season_number == selectedSeason;
+
     return matchesText && matchesSeason;
   });
 
-  renderResults(filtered);
+  renderResults(filtered); // Display the filtered results
 }
 
+// Render the list of episodes to the DOM
 function renderResults(episodes) {
-  resultsList.innerHTML = '';
+  resultsList.innerHTML = ''; // Clear any previous results
 
+  // Show message if no episodes match the filter
   if (episodes.length === 0) {
     resultsList.innerHTML = '<li class="list-group-item">No results found.</li>';
     return;
   }
 
+  // Create and append HTML for each episode
   episodes.forEach(ep => {
     const li = document.createElement('li');
     li.className = 'list-group-item episode-card';
@@ -77,14 +96,17 @@ function renderResults(episodes) {
         </div>
       </div>
     `;
-    resultsList.appendChild(li);
+
+    resultsList.appendChild(li); // Add the episode card to the result list
   });
 }
 
+// Immediately Invoked Async Function Expression to initialize the app
 (async () => {
-  allEpisodes = await fetchAllEpisodes();
-  filterEpisodes();
+  allEpisodes = await fetchAllEpisodes(); // Load all episodes from the API
+  filterEpisodes(); // Render initial results
 
+  // Set up event listeners for live filtering
   searchInput.addEventListener('input', filterEpisodes);
   seasonFilter.addEventListener('change', filterEpisodes);
 })();
