@@ -22,13 +22,18 @@ const nextButton = document.getElementById("next-btn");
 const correctSound = new Audio("assets/audio/joey.mp3");
 const wrongSound = new Audio("assets/audio/janice.mp3");
 
+/**
+ * Randomly shuffles questions and selects the first 10 for the quiz.
+ */
 function shuffleQuestions() {
   shuffledQuestions = [...questions]
     .sort(() => Math.random() - 0.5)
     .slice(0, 10); // Limit to 10 questions
 }
 
-
+/**
+ * Displays the current question and its options on the screen.
+ */
 function showQuestion() {
   resetState();
 
@@ -50,6 +55,11 @@ function showQuestion() {
       : "Next Question";
 }
 
+/**
+ * Handles what happens when a user selects an option.
+ * @param {HTMLElement} selectedOption - The option the user clicked.
+ * @param {Object} currentQuestion - The current question object.
+ */
 function handleOptionClick(selectedOption, currentQuestion) {
   if (Array.from(optionsList.children).some(opt => opt.classList.contains("selected"))) return;
 
@@ -86,12 +96,18 @@ function handleOptionClick(selectedOption, currentQuestion) {
   nextButton.disabled = false;
 }
 
+/**
+ * Clears the question and options display for the next question.
+ */
 function resetState() {
   questionElement.textContent = "";
   optionsList.innerHTML = "";
   nextButton.disabled = true;
 }
 
+/**
+ * Displays the user's final score and shows a review of incorrect answers.
+ */
 function showScore() {
   resetState();
   questionElement.textContent = `🎉 You scored ${score} out of ${shuffledQuestions.length}!`;
@@ -122,6 +138,9 @@ function showScore() {
   nextButton.addEventListener("click", restartQuiz);
 }
 
+/**
+ * Advances to the next question or shows the final score if quiz is done.
+ */
 function handleNext() {
   currentQuestionIndex++;
   if (currentQuestionIndex < shuffledQuestions.length) {
@@ -131,6 +150,9 @@ function handleNext() {
   }
 }
 
+/**
+ * Resets all quiz data and restarts the quiz from the beginning.
+ */
 function restartQuiz() {
   currentQuestionIndex = 0;
   score = 0;
@@ -147,12 +169,14 @@ shuffleQuestions();
 showQuestion();
 nextButton.addEventListener("click", handleNext);
 
-// Quit button functionality
-// This will prompt the user to confirm quitting the quiz and redirect to the homepage
+/**
+ * Handles quitting the quiz by confirming and redirecting to homepage.
+ */
 const quitButton = document.getElementById("quit-btn");
 quitButton.addEventListener("click", () => {
   if (confirm("Are you sure you want to quit the quiz and return to the homepage?")) {
     window.location.href = "index.html";
   }
 });
+
 
