@@ -7,7 +7,7 @@ body {
   font-size: 25px;
   font-weight: 400;
   line-height: 1.6;
-  background: url("assets/images/apartment-block.jpg") no-repeat center center;
+  background: url(../images/apartment-block.jpg) no-repeat center center;
   background-size: cover;
   color: #333;
   min-height: 100vh;
@@ -54,7 +54,7 @@ body {
 
 /* ========== Header Styles ========== */
 header.text-center.py-5 {
-  background: #0d6efd url("assets/images/trivia-picture.webp") no-repeat center
+  background: #0d6efd url("../images/trivia-picture.webp") no-repeat center
     center/cover;
   color: white !important;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
