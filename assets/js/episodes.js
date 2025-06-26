@@ -1,12 +1,12 @@
 // Manual tooltip initialization using Bootstrap
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   // Select all elements with the Bootstrap tooltip trigger attribute
   var tooltipTriggerList = [].slice.call(
     document.querySelectorAll('[data-bs-toggle="tooltip"]')
   );
 
   // Initialize a Bootstrap tooltip for each selected element
-  var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl, {
       trigger: "hover focus" // Tooltip appears on hover or focus
     });
@@ -25,16 +25,19 @@ const resultsList = document.getElementById('resultsList');
 
 let allEpisodes = []; // Store all episodes from all seasons
 
-// Asynchronously fetch episode data for all 10 seasons
+/**
+ * Fetches episode data for all 10 seasons of the TV show from TMDB.
+ *
+ * @async
+ * @returns {Promise<Array>} A promise that resolves to an array of episode objects.
+ */
 async function fetchAllEpisodes() {
   const episodes = [];
 
   for (let season = 1; season <= 10; season++) {
-    // Fetch data for each season
     const res = await fetch(`${BASE_URL}/season/${season}?api_key=${API_KEY}`);
     const data = await res.json();
 
-    // Extract and store relevant episode information
     data.episodes.forEach(ep => {
       episodes.push({
         id: ep.id,
@@ -51,35 +54,41 @@ async function fetchAllEpisodes() {
   return episodes;
 }
 
-// Filter episodes based on search input and season selection
+/**
+ * Filters episodes based on search input and selected season.
+ * Matches episode title and overview with search query.
+ */
 function filterEpisodes() {
-  const query = searchInput.value.toLowerCase(); // Convert search input to lowercase
+  const query = searchInput.value.toLowerCase();
   const selectedSeason = seasonFilter.value;
 
   const filtered = allEpisodes.filter(ep => {
-    // Check if the episode name or description includes the search term
-    const matchesText = ep.name.toLowerCase().includes(query) || ep.overview.toLowerCase().includes(query);
+    const matchesText =
+      ep.name.toLowerCase().includes(query) ||
+      ep.overview.toLowerCase().includes(query);
 
-    // Check if the episode matches the selected season (or if no season is selected)
-    const matchesSeason = selectedSeason === '' || ep.season_number == selectedSeason;
+    const matchesSeason =
+      selectedSeason === '' || ep.season_number == selectedSeason;
 
     return matchesText && matchesSeason;
   });
 
-  renderResults(filtered); // Display the filtered results
+  renderResults(filtered);
 }
 
-// Render the list of episodes to the DOM
+/**
+ * Renders the given list of episodes in the DOM.
+ *
+ * @param {Array} episodes - The episodes to render.
+ */
 function renderResults(episodes) {
-  resultsList.innerHTML = ''; // Clear any previous results
+  resultsList.innerHTML = '';
 
-  // Show message if no episodes match the filter
   if (episodes.length === 0) {
     resultsList.innerHTML = '<li class="list-group-item">No results found.</li>';
     return;
   }
 
-  // Create and append HTML for each episode
   episodes.forEach(ep => {
     const li = document.createElement('li');
     li.className = 'list-group-item episode-card';
@@ -97,16 +106,18 @@ function renderResults(episodes) {
       </div>
     `;
 
-    resultsList.appendChild(li); // Add the episode card to the result list
+    resultsList.appendChild(li);
   });
 }
 
-// Immediately Invoked Async Function Expression to initialize the app
+/**
+ * Immediately Invoked Async Function Expression to initialize the app.
+ * Loads episodes and sets up event listeners for filtering.
+ */
 (async () => {
-  allEpisodes = await fetchAllEpisodes(); // Load all episodes from the API
-  filterEpisodes(); // Render initial results
+  allEpisodes = await fetchAllEpisodes();
+  filterEpisodes();
 
-  // Set up event listeners for live filtering
   searchInput.addEventListener('input', filterEpisodes);
   seasonFilter.addEventListener('change', filterEpisodes);
 })();
