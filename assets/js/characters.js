@@ -1,15 +1,22 @@
-// Manual tooltip initialization
+// Initialize Bootstrap tooltips when the page is fully loaded
 document.addEventListener("DOMContentLoaded", function() {
+  // Find all elements that should have tooltips
   var tooltipTriggerList = [].slice.call(
     document.querySelectorAll('[data-bs-toggle="tooltip"]')
   );
+
+  // Enable Bootstrap tooltip for each element found
   var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl, {
-      trigger: "hover focus"
+      trigger: "hover focus" // Tooltip shows on hover or focus
     });
   });
 });
 
+/**
+ * Array of main characters from the show.
+ * Each object includes the character's name, actor, images, description, and a quote.
+ */
 const characters = [
   {
     name: "Rachel Greene",
@@ -55,12 +62,19 @@ const characters = [
   }
 ];
 
+// Get the container where character cards will be displayed
 const container = document.getElementById("characterCards");
 
+/**
+ * For each character, create a card and add it to the page.
+ * Each card shows two images, name, actor, description, and a quote.
+ */
 characters.forEach(char => {
+  // Create a column to hold the card
   const col = document.createElement("div");
   col.className = "col-md-6 col-lg-4 mb-4";
 
+  // Set the inner HTML for the card
   col.innerHTML = `
     <div class="card character-card hover-zoom h-100 shadow-sm">
       <div class="row g-0">
@@ -82,5 +96,6 @@ characters.forEach(char => {
     </div>
   `;
 
+  // Add the card to the container on the page
   container.appendChild(col);
 });

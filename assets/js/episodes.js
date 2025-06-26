@@ -1,12 +1,11 @@
 // Manual tooltip initialization using Bootstrap
-document.addEventListener("DOMContentLoaded", function () {
-  // Select all elements with the Bootstrap tooltip trigger attribute
+document.addEventListener("DOMContentLoaded", function() {
+  // Set up Bootstrap tooltips on elements that use the data-bs-toggle attribute
   var tooltipTriggerList = [].slice.call(
     document.querySelectorAll('[data-bs-toggle="tooltip"]')
   );
 
-  // Initialize a Bootstrap tooltip for each selected element
-  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl, {
       trigger: "hover focus" // Tooltip appears on hover or focus
     });
@@ -26,10 +25,8 @@ const resultsList = document.getElementById('resultsList');
 let allEpisodes = []; // Store all episodes from all seasons
 
 /**
- * Fetches episode data for all 10 seasons of the TV show from TMDB.
- *
- * @async
- * @returns {Promise<Array>} A promise that resolves to an array of episode objects.
+ * Loads all episodes from all 10 seasons of the show using the TMDB API.
+ * Returns a list of episode objects after the data is loaded.
  */
 async function fetchAllEpisodes() {
   const episodes = [];
@@ -55,21 +52,16 @@ async function fetchAllEpisodes() {
 }
 
 /**
- * Filters episodes based on search input and selected season.
- * Matches episode title and overview with search query.
+ * Filters the list of episodes based on search text and selected season.
+ * Then shows the matching episodes on the page.
  */
 function filterEpisodes() {
   const query = searchInput.value.toLowerCase();
   const selectedSeason = seasonFilter.value;
 
   const filtered = allEpisodes.filter(ep => {
-    const matchesText =
-      ep.name.toLowerCase().includes(query) ||
-      ep.overview.toLowerCase().includes(query);
-
-    const matchesSeason =
-      selectedSeason === '' || ep.season_number == selectedSeason;
-
+    const matchesText = ep.name.toLowerCase().includes(query) || ep.overview.toLowerCase().includes(query);
+    const matchesSeason = selectedSeason === '' || ep.season_number == selectedSeason;
     return matchesText && matchesSeason;
   });
 
@@ -77,12 +69,10 @@ function filterEpisodes() {
 }
 
 /**
- * Renders the given list of episodes in the DOM.
- *
- * @param {Array} episodes - The episodes to render.
+ * Shows the given list of episodes in the results section of the page.
  */
 function renderResults(episodes) {
-  resultsList.innerHTML = '';
+  resultsList.innerHTML = ''; // Clear old results
 
   if (episodes.length === 0) {
     resultsList.innerHTML = '<li class="list-group-item">No results found.</li>';
@@ -111,8 +101,8 @@ function renderResults(episodes) {
 }
 
 /**
- * Immediately Invoked Async Function Expression to initialize the app.
- * Loads episodes and sets up event listeners for filtering.
+ * Loads all episodes, then shows them on the page.
+ * Also sets up filters to respond to user input.
  */
 (async () => {
   allEpisodes = await fetchAllEpisodes();
