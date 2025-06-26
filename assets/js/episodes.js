@@ -111,3 +111,24 @@ function renderResults(episodes) {
   searchInput.addEventListener('input', filterEpisodes);
   seasonFilter.addEventListener('change', filterEpisodes);
 })();
+
+// Back to Top button logic
+const backToTopBtn = document.getElementById("backToTopBtn");
+
+// Show/hide button on scroll
+window.addEventListener("scroll", () => {
+  if (document.documentElement.scrollTop > 300) {
+    backToTopBtn.style.display = "block";
+  } else {
+    backToTopBtn.style.display = "none";
+  }
+});
+
+// Scroll to top on click
+backToTopBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
+
