@@ -19,11 +19,11 @@ document.addEventListener("DOMContentLoaded", function() {
  */
 const characters = [
   {
-    name: "Rachel Greene",
-    playedBy: "Jennifer Aniston",
-    images: ["assets/images/rachel.jpg", "assets/images/rachel1.webp"],
-    description: "Fashion enthusiast who starts off as a waitress and grows into a successful businesswoman.",
-    quote: "It's like all my life everyone has always told me, 'You're a shoe!'"
+    name: "Matty Healy",
+    playedBy: "Seb Mac",
+    images: ["assets/images/seb-real.jpg", "assets/images/1975.jfif"],
+    description: "Seb mMac channels that effortlessly cool, indie-rock charisma—think tousled dark curls, sharp cheekbones, and a smirk that says he knows exactly how to command a room without trying",
+    quote: "I don’t know if I’m falling apart or just becoming more honest about who I’ve always been."
   },
   {
     name: "Monica Geller",
