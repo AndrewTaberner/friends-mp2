@@ -40,7 +40,6 @@
     <!-- Favicons -->
     <link rel="icon" href="assets/icons/favicon.ico" sizes="32x32" />
     <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
-    
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/CSS/style.css" />
@@ -142,38 +141,37 @@
         </div>
       </div>
     </nav>
-    <body>
-      <!-- Header Section -->
-      <header
-        class="bg-primary text-white text-center py-5"
-        aria-labelledby="pageTitle pageSubtitle"
+    <!-- Header Section -->
+    <header
+      class="bg-primary text-white text-center py-5"
+      aria-labelledby="pageTitle pageSubtitle"
+    >
+      <h1 id="pageTitle">
+        <i class="fas fa-star me-2" aria-hidden="true"></i>The One With All the
+        Bios
+      </h1>
+      <p class="lead" id="pageSubtitle">
+        A fan-made interactive site for lovers of <em>Friends</em>
+      </p>
+    </header>
+
+    <!-- Main Section -->
+    <main id="main-content" class="container my-5">
+      <h2 class="text-center mb-4">
+        <i class="fas fa-user-friends me-2" aria-hidden="true"></i>Meet the
+        Characters
+      </h2>
+      <div
+        class="row text-center"
+        id="characterCards"
+        role="list"
+        aria-label="Friends characters"
       >
-        <h1 id="pageTitle">
-          <i class="fas fa-star me-2" aria-hidden="true"></i>The One With All
-          the Bios
-        </h1>
-        <p class="lead" id="pageSubtitle">
-          A fan-made interactive site for lovers of <em>Friends</em>
-        </p>
-      </header>
+        <!-- Character Cards will be inserted here by JavaScript -->
+      </div>
+    </main>
 
-      <!-- Main Section -->
-      <main id="main-content" class="container my-5">
-        <h2 class="text-center mb-4">
-          <i class="fas fa-user-friends me-2" aria-hidden="true"></i>Meet the
-          Characters
-        </h2>
-        <div
-          class="row text-center"
-          id="characterCards"
-          role="list"
-          aria-label="Friends characters"
-        >
-          <!-- Character Cards will be inserted here by JavaScript -->
-        </div>
-      </main>
-
-   <!-- Footer Section -->
+    <!-- Footer Section -->
     <footer class="bg-dark bg-black text-white text-center py-4">
       <div class="container-footer">
         <img
@@ -183,30 +181,34 @@
           loading="lazy"
           class="mb-3"
         />
-        <p class="mb-2" style="font-size: 1.1rem;">
-          &copy; 2025 The One With All the Trivia. Taberner Enterprises, Inc. A fan-made site not
-          affiliated with Warner Bros.
+        <p class="mb-2" style="font-size: 1.1rem">
+          &copy; 2025 The One With All the Trivia. Taberner Enterprises, Inc. A
+          fan-made site not affiliated with Warner Bros.
         </p>
         <div class="social-links">
-          <a href="https://www.facebook.com/friends.tv/?locale=en_GB" 
-          class="text-white mx-2" 
-          target="_blank" rel="noopener" 
-          aria-label="Visit our Facebook page (opens in a new tab)"
-          ><i class="fab fa-facebook-f"></i
+          <a
+            href="https://www.facebook.com/friends.tv/?locale=en_GB"
+            class="text-white mx-2"
+            target="_blank"
+            rel="noopener"
+            aria-label="Visit our Facebook page (opens in a new tab)"
+            ><i class="fab fa-facebook-f"></i
           ></a>
-          <a href="https://x.com/friendstv?lang=en" 
-          class="text-white mx-2" 
-          target="_blank" 
-          rel="noopener" 
-          aria-label="Visit our X page (opens in a new tab)"
-          ><i class="fa-brands fa-x-twitter"></i
+          <a
+            href="https://x.com/friendstv?lang=en"
+            class="text-white mx-2"
+            target="_blank"
+            rel="noopener"
+            aria-label="Visit our X page (opens in a new tab)"
+            ><i class="fa-brands fa-x-twitter"></i
           ></a>
-          <a href="https://www.instagram.com/friendstv/" 
-          class="text-white mx-2" 
-          target="_blank" 
-          rel="noopener" 
-          aria-label="Visit our Instagram page (opens in a new tab)"
-          ><i class="fab fa-instagram"></i
+          <a
+            href="https://www.instagram.com/friendstv/"
+            class="text-white mx-2"
+            target="_blank"
+            rel="noopener"
+            aria-label="Visit our Instagram page (opens in a new tab)"
+            ><i class="fab fa-instagram"></i
           ></a>
         </div>
       </div>
@@ -217,7 +219,5 @@
 
     <!-- Episode Script -->
     <script src="./assets/js/characters.js" defer></script>
-
-   
   </body>
 </html>
