@@ -115,7 +115,6 @@ main.container {
 }
 
 /* ========== Back to Top Button ========== */
-/* ========== Back to Top Button ========== */
 #backToTopBtn {
   position: fixed;
   bottom: 20px;
@@ -259,6 +258,17 @@ footer p {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
+}
+
+/* ========== Mute Audio Toggle ========== */
+#mute-audio-checkbox {
+  transform: scale(1.4);
+  cursor: pointer;
+}
+
+.form-check-label {
+  font-size: 1rem;
+  user-select: none;
 }
 
 /* ========== Responsive Media Queries ========== */
