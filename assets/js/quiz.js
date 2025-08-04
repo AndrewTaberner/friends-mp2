@@ -1,9 +1,9 @@
 // Manual tooltip initialization
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   var tooltipTriggerList = [].slice.call(
     document.querySelectorAll('[data-bs-toggle="tooltip"]')
   );
-  var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl, {
       trigger: "hover focus"
     });
@@ -22,18 +22,28 @@ const nextButton = document.getElementById("next-btn");
 const correctSound = new Audio("assets/audio/joey.mp3");
 const wrongSound = new Audio("assets/audio/janice.mp3");
 
+// Mute checkbox functionality
+const muteCheckbox = document.getElementById("mute-audio-checkbox");
+
+// Ensure audio respects initial checkbox state on load
+correctSound.muted = muteCheckbox.checked;
+wrongSound.muted = muteCheckbox.checked;
+
+muteCheckbox.addEventListener("change", () => {
+  const isMuted = muteCheckbox.checked;
+  correctSound.muted = isMuted;
+  wrongSound.muted = isMuted;
+});
+
 /**
  * Randomly shuffles questions and selects the first 10 for the quiz.
  */
 function shuffleQuestions() {
   shuffledQuestions = [...questions]
     .sort(() => Math.random() - 0.5)
-    .slice(0, 10); // Limit to 10 questions
+    .slice(0, 10);
 }
 
-/**
- * Displays the current question and its options on the screen.
- */
 function showQuestion() {
   resetState();
 
@@ -55,11 +65,6 @@ function showQuestion() {
       : "Next Question";
 }
 
-/**
- * Handles what happens when a user selects an option.
- * @param {HTMLElement} selectedOption - The option the user clicked.
- * @param {Object} currentQuestion - The current question object.
- */
 function handleOptionClick(selectedOption, currentQuestion) {
   if (Array.from(optionsList.children).some(opt => opt.classList.contains("selected"))) return;
 
@@ -82,7 +87,6 @@ function handleOptionClick(selectedOption, currentQuestion) {
       correct: currentQuestion.answer
     });
 
-    // Show correct answer
     Array.from(optionsList.children).forEach(opt => {
       if (opt.textContent === currentQuestion.answer) {
         opt.innerHTML += ' <i class="fas fa-check text-success"></i>';
@@ -91,23 +95,16 @@ function handleOptionClick(selectedOption, currentQuestion) {
     });
   }
 
-  // Disable all options
   Array.from(optionsList.children).forEach(opt => opt.classList.add("disabled"));
   nextButton.disabled = false;
 }
 
-/**
- * Clears the question and options display for the next question.
- */
 function resetState() {
   questionElement.textContent = "";
   optionsList.innerHTML = "";
   nextButton.disabled = true;
 }
 
-/**
- * Displays the user's final score and shows a review of incorrect answers.
- */
 function showScore() {
   resetState();
   questionElement.textContent = `🎉 You scored ${score} out of ${shuffledQuestions.length}!`;
@@ -138,9 +135,6 @@ function showScore() {
   nextButton.addEventListener("click", restartQuiz);
 }
 
-/**
- * Advances to the next question or shows the final score if quiz is done.
- */
 function handleNext() {
   currentQuestionIndex++;
   if (currentQuestionIndex < shuffledQuestions.length) {
@@ -150,9 +144,6 @@ function handleNext() {
   }
 }
 
-/**
- * Resets all quiz data and restarts the quiz from the beginning.
- */
 function restartQuiz() {
   currentQuestionIndex = 0;
   score = 0;
@@ -169,14 +160,9 @@ shuffleQuestions();
 showQuestion();
 nextButton.addEventListener("click", handleNext);
 
-/**
- * Handles quitting the quiz by confirming and redirecting to homepage.
- */
 const quitButton = document.getElementById("quit-btn");
 quitButton.addEventListener("click", () => {
   if (confirm("Are you sure you want to quit the quiz and return to the homepage?")) {
     window.location.href = "index.html";
   }
 });
-
-
