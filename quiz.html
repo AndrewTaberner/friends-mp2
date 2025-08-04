@@ -174,25 +174,27 @@
           aria-live="assertive"
         ></div>
 
-        <!-- Button Row -->
-        <div class="d-flex justify-content-center gap-3 mt-3">
-          <button
-            id="next-btn"
-            class="btn btn-primary flex-fill"
-            disabled
-            aria-label="Next question"
-            style="min-width: 150px"
-          >
-            Let's play...
-          </button>
-          <button
-            id="quit-btn"
-            class="btn btn-outline-danger flex-fill"
-            aria-label="Quit quiz and return to home"
-            style="min-width: 150px"
-          >
-            Quit Quiz
-          </button>
+        <!-- Button Row (Responsive Fix) -->
+        <div class="row g-2 mt-3">
+          <div class="col-12 col-sm-6">
+            <button
+              id="next-btn"
+              class="btn btn-primary w-100"
+              disabled
+              aria-label="Next question"
+            >
+              Let's play...
+            </button>
+          </div>
+          <div class="col-12 col-sm-6">
+            <button
+              id="quit-btn"
+              class="btn btn-outline-danger w-100"
+              aria-label="Quit quiz and return to home"
+            >
+              Quit Quiz
+            </button>
+          </div>
         </div>
 
         <div
