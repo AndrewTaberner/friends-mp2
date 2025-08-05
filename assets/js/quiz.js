@@ -1,42 +1,67 @@
-// Manual tooltip initialization
+// ----------------------------------------
+// Tooltip Initialization
+// ----------------------------------------
+
+/**
+ * Manually initializes all Bootstrap tooltips on the page
+ * once the DOM is fully loaded.
+ */
 document.addEventListener("DOMContentLoaded", function () {
-  var tooltipTriggerList = [].slice.call(
+  const tooltipTriggerList = Array.from(
     document.querySelectorAll('[data-bs-toggle="tooltip"]')
   );
-  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-    return new bootstrap.Tooltip(tooltipTriggerEl, {
-      trigger: "hover focus"
+
+  tooltipTriggerList.forEach((tooltipTriggerEl) => {
+    new bootstrap.Tooltip(tooltipTriggerEl, {
+      trigger: "hover focus",
     });
   });
 });
+
+// ----------------------------------------
+// Quiz State Variables
+// ----------------------------------------
 
 let currentQuestionIndex = 0;
 let score = 0;
 let shuffledQuestions = [];
 let incorrectAnswers = [];
 
+// ----------------------------------------
+// DOM Element References
+// ----------------------------------------
+
 const questionElement = document.getElementById("question");
 const optionsList = document.getElementById("options");
 const nextButton = document.getElementById("next-btn");
+const muteCheckbox = document.getElementById("mute-audio-checkbox");
+const quitButton = document.getElementById("quit-btn");
+
+// ----------------------------------------
+// Audio Setup
+// ----------------------------------------
 
 const correctSound = new Audio("assets/audio/joey.mp3");
 const wrongSound = new Audio("assets/audio/janice.mp3");
-
-// Mute checkbox functionality
-const muteCheckbox = document.getElementById("mute-audio-checkbox");
 
 // Ensure audio respects initial checkbox state on load
 correctSound.muted = muteCheckbox.checked;
 wrongSound.muted = muteCheckbox.checked;
 
+// Toggle audio mute state when checkbox is changed
 muteCheckbox.addEventListener("change", () => {
   const isMuted = muteCheckbox.checked;
   correctSound.muted = isMuted;
   wrongSound.muted = isMuted;
 });
 
+// ----------------------------------------
+// Quiz Logic Functions
+// ----------------------------------------
+
 /**
- * Randomly shuffles questions and selects the first 10 for the quiz.
+ * Shuffles the questions array and selects the first 10 for the quiz.
+ * Updates the global `shuffledQuestions` variable.
  */
 function shuffleQuestions() {
   shuffledQuestions = [...questions]
@@ -44,18 +69,28 @@ function shuffleQuestions() {
     .slice(0, 10);
 }
 
+/**
+ * Displays the current question and its options.
+ * Updates the DOM and configures the "Next" button text.
+ */
 function showQuestion() {
   resetState();
 
   const currentQuestion = shuffledQuestions[currentQuestionIndex];
   questionElement.textContent = currentQuestion.question;
 
-  currentQuestion.options.forEach(optionText => {
+  currentQuestion.options.forEach((optionText) => {
     const li = document.createElement("li");
     li.textContent = optionText;
-    li.classList.add("list-group-item", "list-group-item-action", "cursor-pointer");
+    li.classList.add(
+      "list-group-item",
+      "list-group-item-action",
+      "cursor-pointer"
+    );
 
-    li.addEventListener("click", () => handleOptionClick(li, currentQuestion));
+    li.addEventListener("click", () =>
+      handleOptionClick(li, currentQuestion)
+    );
     optionsList.appendChild(li);
   });
 
@@ -65,15 +100,27 @@ function showQuestion() {
       : "Next Question";
 }
 
+/**
+ * Handles the logic when a user selects an answer.
+ * Plays sound, applies correct/wrong styles, and updates the score.
+ * @param {HTMLElement} selectedOption - The clicked option element.
+ * @param {Object} currentQuestion - The current question object.
+ */
 function handleOptionClick(selectedOption, currentQuestion) {
-  if (Array.from(optionsList.children).some(opt => opt.classList.contains("selected"))) return;
+  if (
+    Array.from(optionsList.children).some((opt) =>
+      opt.classList.contains("selected")
+    )
+  )
+    return;
 
   selectedOption.classList.add("selected");
   const isCorrect = selectedOption.textContent === currentQuestion.answer;
 
   if (isCorrect) {
     correctSound.play();
-    selectedOption.innerHTML += ' <i class="fas fa-check text-success"></i>';
+    selectedOption.innerHTML +=
+      ' <i class="fas fa-check text-success"></i>';
     selectedOption.classList.add("correct-answer");
     score++;
   } else {
@@ -84,10 +131,10 @@ function handleOptionClick(selectedOption, currentQuestion) {
     incorrectAnswers.push({
       question: currentQuestion.question,
       selected: selectedOption.textContent,
-      correct: currentQuestion.answer
+      correct: currentQuestion.answer,
     });
 
-    Array.from(optionsList.children).forEach(opt => {
+    Array.from(optionsList.children).forEach((opt) => {
       if (opt.textContent === currentQuestion.answer) {
         opt.innerHTML += ' <i class="fas fa-check text-success"></i>';
         opt.classList.add("correct-answer");
@@ -95,16 +142,26 @@ function handleOptionClick(selectedOption, currentQuestion) {
     });
   }
 
-  Array.from(optionsList.children).forEach(opt => opt.classList.add("disabled"));
+  Array.from(optionsList.children).forEach((opt) =>
+    opt.classList.add("disabled")
+  );
   nextButton.disabled = false;
 }
 
+/**
+ * Clears the question and options from the DOM and disables the "Next" button.
+ */
 function resetState() {
   questionElement.textContent = "";
   optionsList.innerHTML = "";
   nextButton.disabled = true;
 }
 
+/**
+ * Displays the user's final score.
+ * Shows a breakdown of incorrect answers (if any).
+ * Prepares the "Restart" button.
+ */
 function showScore() {
   resetState();
   questionElement.textContent = `🎉 You scored ${score} out of ${shuffledQuestions.length}!`;
@@ -113,7 +170,7 @@ function showScore() {
     const reviewList = document.createElement("ul");
     reviewList.classList.add("list-group", "mt-4", "text-start");
 
-    incorrectAnswers.forEach(item => {
+    incorrectAnswers.forEach((item) => {
       const li = document.createElement("li");
       li.classList.add("list-group-item");
       li.innerHTML = `
@@ -135,6 +192,9 @@ function showScore() {
   nextButton.addEventListener("click", restartQuiz);
 }
 
+/**
+ * Advances to the next question or shows the final score if finished.
+ */
 function handleNext() {
   currentQuestionIndex++;
   if (currentQuestionIndex < shuffledQuestions.length) {
@@ -144,6 +204,9 @@ function handleNext() {
   }
 }
 
+/**
+ * Resets quiz state and restarts the quiz from the beginning.
+ */
 function restartQuiz() {
   currentQuestionIndex = 0;
   score = 0;
@@ -155,14 +218,24 @@ function restartQuiz() {
   nextButton.addEventListener("click", handleNext);
 }
 
-// Start quiz
+// ----------------------------------------
+// Quiz Initialization
+// ----------------------------------------
+
 shuffleQuestions();
 showQuestion();
 nextButton.addEventListener("click", handleNext);
 
-const quitButton = document.getElementById("quit-btn");
+/**
+ * Handles the "Quit" button click event.
+ * Asks for confirmation and redirects to homepage if confirmed.
+ */
 quitButton.addEventListener("click", () => {
-  if (confirm("Are you sure you want to quit the quiz and return to the homepage?")) {
+  if (
+    confirm(
+      "Are you sure you want to quit the quiz and return to the homepage?"
+    )
+  ) {
     window.location.href = "index.html";
   }
 });
