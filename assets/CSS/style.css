@@ -119,9 +119,9 @@ main.container {
 }
 
 .custom-btn:hover {
-  background-color: rgba(255, 255, 255, 0.4);
-  color: rgb(233, 58, 175);
-  border-color: rgb(233, 58, 175);
+  background-color: white;
+  color: #0d6efd;
+  border-color: #0d6efd;
   transform: translateY(-2px);
 }
 
