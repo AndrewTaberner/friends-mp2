@@ -1,4 +1,7 @@
-// Initialize Bootstrap tooltips when the page is fully loaded
+/**
+ * Initialize Bootstrap tooltips when the DOM is fully loaded.
+ * Applies tooltips to all elements with the attribute [data-bs-toggle="tooltip"].
+ */
 document.addEventListener("DOMContentLoaded", function() {
   // Find all elements that should have tooltips
   var tooltipTriggerList = [].slice.call(
@@ -14,8 +17,13 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 /**
- * Array of main characters from the show.
- * Each object includes the character's name, actor, images, description, and a quote.
+ * Array of main characters from the show Friends.
+ * Each object contains:
+ * - name: Character's name
+ * - playedBy: Actor's name
+ * - images: Array of two image paths (portrait style)
+ * - description: Short bio about the character
+ * - quote: A memorable quote from the character
  */
 const characters = [
   {
@@ -62,19 +70,23 @@ const characters = [
   }
 ];
 
-// Get the container where character cards will be displayed
+// Get the container element where character cards will be inserted
 const container = document.getElementById("characterCards");
 
 /**
- * For each character, create a card and add it to the page.
- * Each card shows two images, name, actor, description, and a quote.
+ * Generate and insert a Bootstrap card for each character.
+ * Each card displays:
+ * - Two side-by-side images
+ * - Character name and actor
+ * - Character description
+ * - A quote
  */
 characters.forEach(char => {
   // Create a column to hold the card
   const col = document.createElement("div");
   col.className = "col-md-6 col-lg-4 mb-4";
 
-  // Set the inner HTML for the card
+  // Set the inner HTML of the card
   col.innerHTML = `
     <div class="card character-card hover-zoom h-100 shadow-sm">
       <div class="row g-0">
@@ -96,6 +108,14 @@ characters.forEach(char => {
     </div>
   `;
 
-  // Add the card to the container on the page
+  // Append the card to the container on the page
   container.appendChild(col);
+
+  /**
+   * Re-initialize Bootstrap tooltips inside the newly created card
+   * This is necessary because dynamically created elements do not inherit tooltip behavior
+   */
+  col.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
+    new bootstrap.Tooltip(el, { trigger: 'hover focus' });
+  });
 });
