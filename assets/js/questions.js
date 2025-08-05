@@ -1,3 +1,15 @@
+/**
+ * An array of quiz questions based on the TV show "Friends".
+ * Each object contains the question text, answer options,
+ * correct answer, and difficulty level.
+ *
+ * @type {Array<{
+ *   question: string,
+ *   options: string[],
+ *   answer: string,
+ *   difficulty: "easy" | "medium" | "hard"
+ * }>}
+ */
 const questions = [
   {
     question: "What is the name of Ross and Monica's dog in childhood?",
@@ -88,7 +100,7 @@ const questions = [
     difficulty: "easy"
   },
   {
-    question: "What name was on the TV guide adressed to Chandler and Joey's apartment?",
+    question: "What name was on the TV guide addressed to Chandler and Joey's apartment?",
     options: ["Mrs Chandler Bing", "Miss Chanandler Bong", "Mr Chandler Bung", "Mr Chanandler Tribbiani"],
     answer: "Miss Chanandler Bong",
     difficulty: "hard"
@@ -128,6 +140,5 @@ const questions = [
     options: ["Dr. Drake Ramoray", "Dr. Mike Brady", "Dr. Phil Hammond", "Dr. Ross Geller"],
     answer: "Dr. Drake Ramoray",
     difficulty: "medium"
-  },
-  
+  }
 ];
