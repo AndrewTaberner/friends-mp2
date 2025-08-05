@@ -288,18 +288,7 @@
       crossorigin="anonymous"
     ></script>
 
-    <!-- Tooltip Initialization -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var tooltipTriggerList = [].slice.call(
-          document.querySelectorAll('[data-bs-toggle="tooltip"]')
-        );
-        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-          return new bootstrap.Tooltip(tooltipTriggerEl, {
-            trigger: "hover focus",
-          });
-        });
-      });
-    </script>
+    <!-- Custom JS -->
+    <script src="assets/js/script.js"></script>
   </body>
 </html>
