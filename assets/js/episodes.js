@@ -98,6 +98,12 @@ function renderResults(episodes) {
 
     resultsList.appendChild(li);
   });
+
+  // Re-initialize tooltips for dynamically created elements
+document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
+  new bootstrap.Tooltip(el, { trigger: 'hover focus' });
+});
+
 }
 
 /**
