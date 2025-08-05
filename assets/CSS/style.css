@@ -133,7 +133,7 @@ main.container {
   display: none;
   z-index: 1050;
   /* Your existing button styles from .btn class */
-  border: 2px solid white;
+  border-color: #0d6efd;
   background-color: royalblue;
   color: white;
   transition: all 0.3s ease;
