@@ -231,11 +231,12 @@ nextButton.addEventListener("click", handleNext);
  * Asks for confirmation and redirects to homepage if confirmed.
  */
 quitButton.addEventListener("click", () => {
-  if (
-    confirm(
-      "Are you sure you want to quit the quiz and return to the homepage?"
-    )
-  ) {
-    window.location.href = "index.html";
-  }
+  const quitModal = new bootstrap.Modal(document.getElementById("quitModal"));
+  quitModal.show();
 });
+
+// Handle confirmation
+document.getElementById("confirmQuitBtn").addEventListener("click", () => {
+  window.location.href = "index.html";
+});
+
