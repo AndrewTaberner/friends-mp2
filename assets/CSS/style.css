@@ -125,6 +125,32 @@ main.container {
   transform: translateY(-2px);
 }
 
+/* Accessibility & Contrast Fixes */
+
+/* Skip link */
+.visually-hidden-focusable {
+  position: absolute;
+  left: -999px;
+}
+.visually-hidden-focusable:focus {
+  position: static;
+  left: auto;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  z-index: 1000;
+}
+/* Higher contrast for buttons */
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+  background-color: #0a58ca !important;
+  color: #fff !important;
+}
+.nav-link.custom-nav-link:hover,
+.nav-link.custom-nav-link:focus {
+  color: #f8f9fa !important; /* solid white for better contrast */
+}
+
 /* ========== Back to Top Button ========== */
 #backToTopBtn {
   position: fixed;
@@ -145,9 +171,9 @@ main.container {
 }
 
 #backToTopBtn:hover {
-  background-color: rgba(255, 255, 255, 0.4);
-  color: rgb(233, 58, 175);
-  border-color: rgb(233, 58, 175);
+  background-color: white;
+  color: #0d6efd;
+  border-color: #0d6efd;
   transform: translateY(-2px);
 }
 

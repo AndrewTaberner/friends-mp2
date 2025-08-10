@@ -46,8 +46,16 @@
   </head>
 
   <body>
+    <!-- Skip link for keyboard users -->
+    <a href="#main-content" class="visually-hidden-focusable"
+      >Skip to main content</a
+    >
+
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-black">
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-dark bg-black"
+      role="navigation"
+    >
       <div class="container-fluid">
         <a
           class="navbar-brand d-flex align-items-center logo-container"
@@ -91,38 +99,39 @@
               <a
                 class="nav-link custom-nav-link"
                 href="quiz.html"
-                aria-label="Quiz"
+                aria-label="Friends Trivia Quiz page"
                 data-bs-toggle="tooltip"
                 data-bs-placement="bottom"
                 title="Test your Friends knowledge!"
               >
-                <i class="fas fa-question-circle me-1" aria-hidden="true"></i
-                >Quiz
+                <i class="fas fa-question-circle me-1" aria-hidden="true"></i>
+                Quiz
               </a>
             </li>
             <li class="nav-item">
               <a
                 class="nav-link custom-nav-link"
                 href="episodes.html"
-                aria-label="Episodes"
+                aria-label="Friends Episodes page"
                 data-bs-toggle="tooltip"
                 data-bs-placement="bottom"
                 title="Browse all episodes"
               >
-                <i class="fas fa-film me-1" aria-hidden="true"></i>Episodes
+                <i class="fas fa-film me-1" aria-hidden="true"></i>
+                Episodes
               </a>
             </li>
             <li class="nav-item">
               <a
                 class="nav-link custom-nav-link"
                 href="characters.html"
-                aria-label="Characters"
+                aria-label="Friends Characters page"
                 data-bs-toggle="tooltip"
                 data-bs-placement="bottom"
                 title="Meet the gang"
               >
-                <i class="fas fa-user-friends me-1" aria-hidden="true"></i
-                >Characters
+                <i class="fas fa-user-friends me-1" aria-hidden="true"></i>
+                Characters
               </a>
             </li>
           </ul>
@@ -131,7 +140,7 @@
     </nav>
 
     <!-- Header Section -->
-    <header class="text-center py-5">
+    <header role="banner" class="text-center py-5">
       <div class="container-head py-4">
         <h1 class="display-4 fw-bold">
           <i class="fas fa-star me-2" aria-hidden="true"></i>The One With All
@@ -144,7 +153,7 @@
     </header>
 
     <!-- Main Section -->
-    <main id="main-content" class="container my-5">
+    <main role="main" id="main-content" class="container my-5">
       <div class="row g-4">
         <!-- Trivia Quiz -->
         <div class="col-md-4 mb-4">
@@ -160,8 +169,8 @@
                 <i
                   class="fas fa-lightbulb text-primary me-1"
                   aria-hidden="true"
-                ></i
-                >Trivia Quiz
+                ></i>
+                Trivia Quiz
               </h2>
               <p class="card-text flex-grow-1">
                 Think you know <em>Friends</em>? Prove it in our fan-made quiz!
@@ -169,8 +178,10 @@
               <a
                 href="quiz.html"
                 class="btn btn-primary custom-btn align-self-center"
-                >Play Now</a
+                aria-label="Play the Friends Trivia Quiz"
               >
+                Play Now
+              </a>
             </div>
           </div>
         </div>
@@ -186,17 +197,19 @@
             />
             <div class="card-body d-flex flex-column">
               <h2 class="card-title h5">
-                <i class="fas fa-tv text-primary me-1" aria-hidden="true"></i
-                >Episode Search
+                <i class="fas fa-tv text-primary me-1" aria-hidden="true"></i>
+                Episode Search
               </h2>
               <p class="card-text flex-grow-1">
                 Search episodes and get show information at your fingertips.
               </p>
               <a
                 href="episodes.html"
-                class="btn btn-outline-primary custom-btn align-self-center"
-                >Search</a
+                class="btn btn-primary custom-btn align-self-center"
+                aria-label="Search Friends episodes"
               >
+                Search
+              </a>
             </div>
           </div>
         </div>
@@ -215,8 +228,8 @@
                 <i
                   class="fas fa-id-badge text-primary me-1"
                   aria-hidden="true"
-                ></i
-                >Character Profiles
+                ></i>
+                Character Profiles
               </h2>
               <p class="card-text flex-grow-1">
                 Explore bios, quotes and trivia of your favorite Friends
@@ -224,9 +237,11 @@
               </p>
               <a
                 href="characters.html"
-                class="btn btn-outline-primary custom-btn align-self-center"
-                >Explore</a
+                class="btn btn-primary custom-btn align-self-center"
+                aria-label="Explore Friends character profiles"
               >
+                Explore
+              </a>
             </div>
           </div>
         </div>
@@ -234,7 +249,10 @@
     </main>
 
     <!-- Footer Section -->
-    <footer class="bg-dark bg-black text-white text-center py-4">
+    <footer
+      role="contentinfo"
+      class="bg-dark bg-black text-white text-center py-4"
+    >
       <div class="container-footer">
         <img
           src="assets/images/friends-logo.jpeg"
